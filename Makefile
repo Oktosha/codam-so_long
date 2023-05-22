@@ -39,8 +39,6 @@ SRC_FOLDER=src
 BINARY_FOLDER=bin
 OBJS=${addprefix ${BINARY_FOLDER}/,${SRCS:.c=.o}}
 
-CFLAGS = -Wextra -Wall -Werror
-
 ${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c ${LIBMLX_SUBMODULE}
 	mkdir -p $(@D)
 	${CC} ${CFLAGS} $< -o $@ -c -I${LIBMLX_INCLUDE_FOLDER}
@@ -48,7 +46,7 @@ ${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c ${LIBMLX_SUBMODULE}
 # --- Final linking ---
 
 ${NAME}: ${OBJS} ${LIBMLX_BINARY}
-	${CC} $^ -o $@ ${LIBMLX_LINKING_FLAGS}
+	${CC} ${CFLAGS} $^ -o $@ ${LIBMLX_LINKING_FLAGS}
 
 # -- More boilerplate things --
 
