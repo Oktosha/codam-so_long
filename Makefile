@@ -12,11 +12,14 @@ all: ${NAME}
 # --- MLX42 ---
 
 LIBMLX_FOLDER=./lib/MLX42
+LIBMLX_SUBMODULE=${LIBMLX_FOLDER}/.git
 LIBMLX_BUILD_FOLDER=${LIBMLX_FOLDER}/build
 LIBMLX_BINARY=${LIBMLX_BUILD_FOLDER}/libmlx42.a
 
-${LIBMLX_BINARY}:
+${LIBMLX_SUBMODULE}:
 	git submodule update --init ${@D}
+
+${LIBMLX_BINARY}: ${LIBMLX_SUBMODULE}
 	cmake ${LIBMLX_FOLDER} -B ${LIBMLX_BUILD_FOLDER}
 	make -C ${LIBMLX_BUILD_FOLDER} -j4
 
@@ -38,7 +41,7 @@ OBJS=${addprefix ${BINARY_FOLDER}/,${SRCS:.c=.o}}
 
 CFLAGS = -Wextra -Wall -Werror
 
-${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c
+${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c ${LIBMLX_SUBMODULE}
 	mkdir -p $(@D)
 	${CC} ${CFLAGS} $< -o $@ -c -I${LIBMLX_INCLUDE_FOLDER}
 
