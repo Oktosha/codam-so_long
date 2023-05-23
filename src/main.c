@@ -1,50 +1,51 @@
-// Written by Bruh
-
-#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "MLX42/MLX42.h"
-#define WIDTH 256
-#define HEIGHT 256
+#define WIDTH 10000
+#define HEIGHT 5120
 
-// Exit the program as failure.
-static void ft_error(void)
+static void error(void)
 {
-	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
+	puts(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
 // Print the window width and height.
-static void ft_hook(void* param)
+static void ft_hook(int32_t width, int32_t height, void* param)
 {
-	const mlx_t* mlx = param;
-
-	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+	(void)(param);
+	printf("WIDTH: %d | HEIGHT: %d\n", width, height);
 }
 
 int32_t	main(void)
 {
-
-	// MLX allows you to define its core behaviour before startup.
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+	// Start mlx
+	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 	if (!mlx)
-		ft_error();
+        error();
 
-	/* Do stuff */
+	// Try to load the file
+	mlx_texture_t* texture = mlx_load_png("./assets/colored_packed.png");
+	if (!texture)
+        error();
+	
+	// Convert texture to a displayable image
+	mlx_image_t* img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+        error();
 
-	// Create and display the image.
-	mlx_image_t* img = mlx_new_image(mlx, 256, 256);
-	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
-		ft_error();
+	// Display the image
+	if (mlx_image_to_window(mlx, img, -256, -256) < 0)
+        error();
+	
+	mlx_resize_hook(mlx, ft_hook, mlx);
 
-	// Even after the image is being displayed, we can still modify the buffer.
-	mlx_put_pixel(img, 50, 50, 0xFF0000FF);
-
-	// Register a hook and pass mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
-	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
+
+	// Optional, terminate will clean up any leftovers, this is just to demonstrate.
+	mlx_delete_image(mlx, img);
+	mlx_delete_texture(texture);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }
