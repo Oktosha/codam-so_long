@@ -34,10 +34,11 @@ static void loop_hook(void* param)
 
 static void key_hook(mlx_key_data_t keydata, void* param)
 {
-	(void) param;
 	(void) keydata;
+	mlx_t* mlx = param;
 	++key_cnt;
 	printf("key hook %d\n", key_cnt);
+	mlx_close_window(mlx);
 }
 
 int32_t	main(void)
@@ -64,12 +65,16 @@ int32_t	main(void)
 
 	mlx_resize_hook(mlx,resize_hook, mlx);
 	mlx_loop_hook(mlx, loop_hook, mlx);
-	mlx_key_hook(mlx, key_hook, NULL);
+	mlx_key_hook(mlx, key_hook, mlx);
+	mlx_set_window_limit(mlx, 100, 100, -1, -1);
 	mlx_loop(mlx);
 
 	// Optional, terminate will clean up any leftovers, this is just to demonstrate.
-	mlx_delete_image(mlx, img);
+	//mlx_delete_image(mlx, img);
 	mlx_delete_texture(texture);
 	mlx_terminate(mlx);
+	texture = NULL;
+	img = NULL;
+	getchar();
 	return (EXIT_SUCCESS);
 }
