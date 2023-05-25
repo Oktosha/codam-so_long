@@ -2,8 +2,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "MLX42/MLX42.h"
-#define WIDTH 10000
-#define HEIGHT 5120
+#include "MLX42/MLX42_Int.h"
+#define WIDTH 512
+#define HEIGHT 512
+
+mlx_image_t* img;
+int resize_cnt = 0;
+int key_cnt = 0;
+int loop_cnt = 0;
 
 static void error(void)
 {
@@ -12,35 +18,53 @@ static void error(void)
 }
 
 // Print the window width and height.
-static void ft_hook(int32_t width, int32_t height, void* param)
+static void resize_hook(int32_t width, int32_t height, void* param)
 {
-	(void)(param);
-	printf("WIDTH: %d | HEIGHT: %d\n", width, height);
+	(void) param;
+	++resize_cnt;
+	printf("resize hook %d: WIDTH: %d | HEIGHT: %d\n", resize_cnt, width, height);
+}
+
+static void loop_hook(void* param)
+{
+	++loop_cnt;
+	const mlx_t* mlx = param;
+	printf("loop hook %d: WIDTH: %d | HEIGHT: %d\n", loop_cnt, mlx->width, mlx->height);
+}
+
+static void key_hook(mlx_key_data_t keydata, void* param)
+{
+	(void) param;
+	(void) keydata;
+	++key_cnt;
+	printf("key hook %d\n", key_cnt);
 }
 
 int32_t	main(void)
 {
+	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	// Start mlx
 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
 	if (!mlx)
         error();
 
 	// Try to load the file
-	mlx_texture_t* texture = mlx_load_png("./assets/colored_packed.png");
+	mlx_texture_t* texture = mlx_load_png("./assets/wall.png");
 	if (!texture)
         error();
-	
+
 	// Convert texture to a displayable image
-	mlx_image_t* img = mlx_texture_to_image(mlx, texture);
+	img = mlx_texture_to_image(mlx, texture);
 	if (!img)
         error();
 
 	// Display the image
-	if (mlx_image_to_window(mlx, img, -256, -256) < 0)
+	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
         error();
-	
-	mlx_resize_hook(mlx, ft_hook, mlx);
 
+	mlx_resize_hook(mlx,resize_hook, mlx);
+	mlx_loop_hook(mlx, loop_hook, mlx);
+	mlx_key_hook(mlx, key_hook, NULL);
 	mlx_loop(mlx);
 
 	// Optional, terminate will clean up any leftovers, this is just to demonstrate.
