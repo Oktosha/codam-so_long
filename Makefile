@@ -25,8 +25,11 @@ ${LIBMLX_BINARY}: ${LIBMLX_SUBMODULE}
 
 LIBMLX_INCLUDE_FOLDER=${LIBMLX_FOLDER}/include
 
+# on my home computer I set it to -lglfw (without 3)
+LIBGLFW_FLAG = -lglfw3
+
 LIBMLX_LINKING_FLAGS= \
--ldl -lglfw3 -pthread -lm \
+-ldl ${LIBGLFW_FLAG} -pthread -lm \
 -framework Cocoa \
 -framework OpenGL \
 -framework IOKit
