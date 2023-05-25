@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:06:30 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/05/25 18:17:50 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/05/25 23:25:20 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	so_long(int argc, char **argv)
 	if (argc != 2)
 		return (sl_error_explain_args(argc, argv));
 	status = sl_read_map(argv[1], &(game.map));
-	if (status != STATUS_SUCCESS)
+	if (status != SL_STATUS_SUCCESS)
 		return (status);
 	status = sl_read_assets(&(game.assets));
-	if (status != STATUS_SUCCESS)
+	if (status != SL_STATUS_SUCCESS)
 		return (sl_free_map(&(game.map)), status);
 	status = sl_init_game(&game);
-	if (status != STATUS_SUCCESS)
+	if (status != SL_STATUS_SUCCESS)
 		return (status);
 	mlx_loop(game.mlx);
 	if (!game.map.is_finished)
@@ -42,5 +42,5 @@ int	so_long(int argc, char **argv)
 	sl_free_map(&(game.map));
 	sl_free_draw_utils(&(game.utils));
 	mlx_terminate(game.mlx);
-	return (STATUS_SUCCESS);
+	return (SL_STATUS_SUCCESS);
 }

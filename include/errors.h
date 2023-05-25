@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:00:29 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/05/25 18:17:56 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/05/25 23:25:46 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 typedef enum e_sl_status
 {
-	STATUS_SUCCESS = 0,
-	STATUS_MAP_ERROR,
-	STATUS_ASSET_ERROR,
-	STATUS_MEMORY_ERROR,
-	STATUS_ARGS_ERROR,
-	STATUS_FILE_ERROR,
-	STATUS_TILESIZE_ERROR,
+	SL_STATUS_SUCCESS = 0,
+	SL_STATUS_MAP_ERROR,
+	SL_STATUS_ASSET_ERROR,
+	SL_STATUS_MEMORY_ERROR,
+	SL_STATUS_ARGS_ERROR,
+	SL_STATUS_FILE_ERROR,
+	SL_STATUS_TILESIZE_ERROR,
 }	t_sl_status;
 
 #endif
