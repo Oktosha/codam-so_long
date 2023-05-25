@@ -10,3 +10,5 @@ mlx_close_window is safe to call from a hook (and mlx_terminate -> not)
 git remote add intra [REPO_URL_FROM_THE_INTRANET]
 git push intra main:master
 ```
+
+be careful, don't free all data in key hook, one can queue several key hooks
