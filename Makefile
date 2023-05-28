@@ -9,6 +9,21 @@ CFLAGS=-Wall -Wextra -Werror
 NAME=so_long
 all: ${NAME}
 
+# --- codam-io (my input/output lib) ---
+
+LIBIO_FOLDER=./lib/MLX42
+LIBIO_SUBMODULE=${LIBIO_FOLDER}/.git
+LIBIO_BUILD_FOLDER=${LIBIO_FOLDER}/build
+LIBIO_BINARY=${LIBIO_BUILD_FOLDER}/libcodamio.a
+
+${LIBIO_SUBMODULE}:
+	git submodule update --init ${@D}
+
+${LIBIO_BINARY}: ${LIBIO_SUBMODULE}
+	make -C ${LIBIO_FOLDER}
+
+LIBIO_INCLUDE_FOLDER=${LIBIO_FOLDER}/include
+
 # --- MLX42 ---
 
 LIBMLX_FOLDER=./lib/MLX42
@@ -44,16 +59,21 @@ OBJS=${addprefix ${BINARY_FOLDER}/,${SRCS:.c=.o}}
 
 ${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c ${LIBMLX_SUBMODULE}
 	mkdir -p $(@D)
-	${CC} ${CFLAGS} $< -o $@ -c -I${LIBMLX_INCLUDE_FOLDER}
+	${CC} ${CFLAGS} $< -o $@ -c -I${LIBMLX_INCLUDE_FOLDER} -I${LIBIO_INCLUDE_FOLDER}
 
 # --- Final linking ---
 
-${NAME}: ${OBJS} ${LIBMLX_BINARY}
+${NAME}: ${OBJS} ${LIBMLX_BINARY} ${LIBIO_BINARY}
 	${CC} ${CFLAGS} $^ -o $@ ${LIBMLX_LINKING_FLAGS}
+
+# --- norm ---
+
+norm: ${LIBIO_SUBMODULE}
+	norminette src include lib/io
 
 # -- More boilerplate things --
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm
 
 clean:
 	rm -rf ${BINARY_FOLDER} ${LIBMLX_BUILD_FOLDER}
