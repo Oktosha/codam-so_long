@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 16:45:09 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/05/25 17:44:10 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/05/29 18:28:57 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_sl_map
 	int			is_finished;
 }	t_sl_map;
 
-int	sl_read_map(char *map_file, t_sl_map *map);
+int	sl_read_map(char *map_filename, t_sl_map *map);
 int	sl_free_map(t_sl_map *map);
 
 #endif

@@ -11,7 +11,7 @@ all: ${NAME}
 
 # --- codam-io (my input/output lib) ---
 
-LIBIO_FOLDER=./lib/MLX42
+LIBIO_FOLDER=./lib/io
 LIBIO_SUBMODULE=${LIBIO_FOLDER}/.git
 LIBIO_BUILD_FOLDER=${LIBIO_FOLDER}/build
 LIBIO_BINARY=${LIBIO_BUILD_FOLDER}/libcodamio.a
@@ -51,15 +51,31 @@ LIBMLX_LINKING_FLAGS= \
 
 # --- Objects compilation --
 
-SRCS=main.c
+SO_LONG_INCLUDE_FOLDER=include
+
+HEADER_SRCS=\
+assets.h \
+errors.h \
+game.h \
+map.h \
+point.h \
+so_long.h
+
+HEADERS=${addprefix ${SO_LONG_INCLUDE_FOLDER}/,${HEADER_SRCS}}
+
+SRCS=\
+main.c \
+map.c \
+so_long.c
 
 SRC_FOLDER=src
 BINARY_FOLDER=bin
 OBJS=${addprefix ${BINARY_FOLDER}/,${SRCS:.c=.o}}
 
-${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c ${LIBMLX_SUBMODULE}
+${OBJS}: ${BINARY_FOLDER}/%.o: ${SRC_FOLDER}/%.c ${LIBMLX_BINARY} ${LIBIO_BINARY} ${HEADERS}
 	mkdir -p $(@D)
-	${CC} ${CFLAGS} $< -o $@ -c -I${LIBMLX_INCLUDE_FOLDER} -I${LIBIO_INCLUDE_FOLDER}
+	${CC} ${CFLAGS} $< -o $@ -c \
+-I${LIBMLX_INCLUDE_FOLDER} -I${LIBIO_INCLUDE_FOLDER} -I${SO_LONG_INCLUDE_FOLDER}
 
 # --- Final linking ---
 

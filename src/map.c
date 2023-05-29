@@ -6,11 +6,12 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/29 00:51:17 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/05/29 01:10:54 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/05/29 19:03:54 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "codam_io.h"
 
 #include "map.h"
 
@@ -29,20 +30,27 @@ int	sl_free_map(t_sl_map *map)
 	return (0);
 }
 
-int sl_map_precheck(char *map_file, t_sl_map *map)
+static int increase_capacity(t_sl_map *map, int *capacity)
 {
-
+	
 }
 
-int	sl_read_map(char *map_file, t_sl_map *map)
+int	sl_read_map(char *map_filename, t_sl_map *map)
 {
-	int	status;
+	int				reserved_height;
+	t_io_input_file	file;
+	char			*line;
 
-	status = sl_map_precheck(map_file, map);
-	if (status != SL_STATUS_SUCCESS)
-		return (status);
-	map->data = malloc(map->height * sizeof(char *));
+	if (io_open_for_read(map_filename, &file) != IO_OPEN_FOR_READ_SUCCESS)
+		return (SL_STATUS_FILE_ERROR);
+	reserved_height = 3;
+	map->height = 0;
+	map->data = malloc(reserved_height * sizeof(char *));
 	if (map->data == NULL)
 		return (SL_STATUS_MEMORY_ERROR);
-	
+	while (io_next_line(&file, &line) == IO_NEXT_LINE_SUCCESS)
+	{
+		if (map->height == reserved_height)
+		
+	}
 }
