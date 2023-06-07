@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   sl_10_start_mlx_loop.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/29 00:02:29 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:23:38 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/07 17:10:27 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/07 17:12:56 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+t_sl_status	sl_10_start_mlx_loop(t_sl_game *game)
 {
-	return (so_long(argc, argv));
+	(void) game;
+	return (SL_SUCCESS);
 }

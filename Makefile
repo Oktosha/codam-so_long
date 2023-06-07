@@ -7,7 +7,7 @@ CFLAGS=-Wall -Wextra -Werror
 # --- Main target ---
 
 NAME=so_long
-all: ${NAME}
+all: libio libmlx ${NAME}
 
 # --- codam-io (my input/output lib) ---
 
@@ -15,12 +15,18 @@ LIBIO_FOLDER=./lib/io
 LIBIO_SUBMODULE=${LIBIO_FOLDER}/.git
 LIBIO_BUILD_FOLDER=${LIBIO_FOLDER}/build
 LIBIO_BINARY=${LIBIO_BUILD_FOLDER}/libcodamio.a
+LIBIO_NO_FAILFAST_FLAGS=\
+-DIO_FAILFAST_ON_ALLOCATION_ERROR=0 \
+-DIO_FAILFAST_ON_CLOSE_ERROR=0 \
+-IO_FAILFAST_ON_OPEN_ERROR=0 \
+-DIO_FAILFAST_ON_READ_ERROR=0 \
+-DIO_FAILFAST_ON_WRITE_ERROR=0
+
+libio: ${LIBIO_SUBMODULE}
+	make -C ${LIBIO_FOLDER} CFLAGS="${CFLAGS} ${LIBIO_NO_FAILFAST_FLAGS}"
 
 ${LIBIO_SUBMODULE}:
 	git submodule update --init ${@D}
-
-${LIBIO_BINARY}: ${LIBIO_SUBMODULE}
-	make -C ${LIBIO_FOLDER}
 
 LIBIO_INCLUDE_FOLDER=${LIBIO_FOLDER}/include
 
@@ -31,16 +37,17 @@ LIBMLX_SUBMODULE=${LIBMLX_FOLDER}/.git
 LIBMLX_BUILD_FOLDER=${LIBMLX_FOLDER}/build
 LIBMLX_BINARY=${LIBMLX_BUILD_FOLDER}/libmlx42.a
 
-${LIBMLX_SUBMODULE}:
-	git submodule update --init ${@D}
-
-${LIBMLX_BINARY}: ${LIBMLX_SUBMODULE}
+libmlx: ${LIBMLX_SUBMODULE}
 	cmake ${LIBMLX_FOLDER} -B ${LIBMLX_BUILD_FOLDER}
 	make -C ${LIBMLX_BUILD_FOLDER} -j4
+
+${LIBMLX_SUBMODULE}:
+	git submodule update --init ${@D}
 
 LIBMLX_INCLUDE_FOLDER=${LIBMLX_FOLDER}/include
 
 # on my home computer I set it to -lglfw (without 3)
+# i. e. make LIBGLFW_FLAG=-lglfw
 LIBGLFW_FLAG = -lglfw3
 
 LIBMLX_LINKING_FLAGS= \
@@ -54,19 +61,28 @@ LIBMLX_LINKING_FLAGS= \
 SO_LONG_INCLUDE_FOLDER=include
 
 HEADER_SRCS=\
-assets.h \
-errors.h \
-game.h \
-map.h \
-point.h \
 so_long.h
 
 HEADERS=${addprefix ${SO_LONG_INCLUDE_FOLDER}/,${HEADER_SRCS}}
 
 SRCS=\
 main.c \
-map.c \
-so_long.c
+sl_apply.c \
+sl_cleanup.c \
+sl_err.c \
+sl_init.c \
+so_long.c \
+flow/sl_01_get_filename_from_argc_argv.c \
+flow/sl_02_check_file_extention.c \
+flow/sl_03_read_map_data.c \
+flow/sl_04_init_map.c \
+flow/sl_05_read_assets.c \
+flow/sl_06_init_mlx.c \
+flow/sl_07_instantiate_images.c \
+flow/sl_08_init_draw_utils.c \
+flow/sl_09_add_hooks.c \
+flow/sl_10_start_mlx_loop.c \
+flow/sl_11_print_summary.c
 
 SRC_FOLDER=src
 BINARY_FOLDER=bin
@@ -89,10 +105,10 @@ norm: ${LIBIO_SUBMODULE}
 
 # -- More boilerplate things --
 
-.PHONY: all clean fclean re norm
+.PHONY: all libio libmlx clean fclean re norm
 
 clean:
-	rm -rf ${BINARY_FOLDER} ${LIBMLX_BUILD_FOLDER}
+	rm -rf ${BINARY_FOLDER} ${LIBMLX_BUILD_FOLDER} ${LIBIO_BUILD_FOLDER}
 
 fclean: clean
 	rm -f ${NAME}

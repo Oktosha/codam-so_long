@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "MLX42/MLX42.h"
 #include "MLX42/MLX42_Int.h"
+#include "codam_io.h"
 #define WIDTH 512
 #define HEIGHT 512
 
@@ -25,24 +26,30 @@ static void resize_hook(int32_t width, int32_t height, void* param)
 	printf("resize hook %d: WIDTH: %d | HEIGHT: %d\n", resize_cnt, width, height);
 }
 
-static void loop_hook(void* param)
-{
-	++loop_cnt;
-	const mlx_t* mlx = param;
-	printf("loop hook %d: WIDTH: %d | HEIGHT: %d\n", loop_cnt, mlx->width, mlx->height);
-}
+// static void loop_hook(void* param)
+// {
+// 	++loop_cnt;
+// 	const mlx_t* mlx = param;
+// 	printf("loop hook %d: WIDTH: %d | HEIGHT: %d\n", loop_cnt, mlx->width, mlx->height);
+// }
 
 static void key_hook(mlx_key_data_t keydata, void* param)
 {
 	(void) keydata;
 	mlx_t* mlx = param;
 	++key_cnt;
-	printf("key hook %d\n", key_cnt);
-	mlx_close_window(mlx);
+	int ret = write(STDOUT_FILENO, "abcde\n", 6);
+	io_err("ret = %d\n", ret);
+	(void) mlx;
+	// mlx_close_window(mlx);
 }
 
 int32_t	main(void)
 {
+	int ret = io_out("Hello, world!\n");
+	io_err("ret = %d\n", ret);
+	ret = io_out("Hello, world!\n");
+	io_err("ret = %d\n", ret);
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	// Start mlx
 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
@@ -64,7 +71,7 @@ int32_t	main(void)
         error();
 
 	mlx_resize_hook(mlx,resize_hook, mlx);
-	mlx_loop_hook(mlx, loop_hook, mlx);
+	// mlx_loop_hook(mlx, loop_hook, mlx);
 	mlx_key_hook(mlx, key_hook, mlx);
 	mlx_set_window_limit(mlx, 100, 100, -1, -1);
 	mlx_loop(mlx);
@@ -75,6 +82,5 @@ int32_t	main(void)
 	mlx_terminate(mlx);
 	texture = NULL;
 	img = NULL;
-	getchar();
 	return (EXIT_SUCCESS);
 }

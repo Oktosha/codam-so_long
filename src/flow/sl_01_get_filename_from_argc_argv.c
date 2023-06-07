@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   sl_01_get_filename_from_argc_argv.c                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/29 00:02:29 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:23:38 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/07 15:25:33 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/07 17:20:58 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+t_sl_status	sl_01_get_filename_from_argc_argv(t_sl_game *game)
 {
-	return (so_long(argc, argv));
+	if (game->argc < 2)
+		return (sl_err(SL_ERROR_TOO_FEW_ARGS, "No map file provided"));
+	if (game->argc > 2)
+		return (sl_err(SL_ERROR_TOO_MANY_ARGS, "Too many command line args"));
+	game->map_filename = game->argv[1];
+	return (SL_SUCCESS);
 }

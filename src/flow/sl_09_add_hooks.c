@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   sl_09_add_hooks.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/29 00:02:29 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:23:38 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/07 17:10:22 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/07 17:12:41 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+t_sl_status	sl_09_add_hooks(t_sl_game *game)
 {
-	return (so_long(argc, argv));
+	(void) game;
+	return (SL_SUCCESS);
 }

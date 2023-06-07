@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   sl_apply.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/29 00:02:29 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:23:38 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/05 00:08:12 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/05 00:09:13 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	sl_apply(t_sl_game *game, t_sl_flow f, t_sl_status *status)
 {
-	return (so_long(argc, argv));
+	if (*status == SL_SUCCESS)
+		*status = f(game);
 }
