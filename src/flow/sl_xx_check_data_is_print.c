@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_04_init_map.c                                   :+:    :+:            */
+/*   sl_xx_check_data_is_print.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/07 17:09:56 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/09 14:12:23 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/09 14:12:38 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/09 15:04:19 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_sl_status s_sl_count(t_sl_game *game)
+t_sl_status	sl_xx_check_data_is_print(t_sl_game *game)
 {
-	int i;
-	int	latest_newline;
-	int	cnt_player;
+	int	i;
 
 	i = 0;
-	latest_newline = -1;
 	while (i < game->raw_map.len)
 	{
-
+		if (!io_is_ascii_print(game->raw_map.data[i]) \
+			&& !io_is_ascii_whitespace(game->raw_map.data[i]))
+			return (sl_err(SL_ERROR_MAP_UNEXPECTED_SYMBOL, \
+			"unexpected symbol %d at position %d in %s\n" \
+			"it is neither an ascii print symbol nor an ascii whitespace\n" \
+			"Allowed symbols are '\\n'=10 '0'=48 '1'=49 'C'=67 'E'=69 'P'=80", \
+			game->raw_map.data[i], i, game->map_filename));
+		i += 1;
 	}
-}
-
-t_sl_status	sl_04_init_map(t_sl_game *game)
-{
-	(void) game;
 	return (SL_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:12:21 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/09 14:53:15 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@
 typedef enum e_sl_status {
 	SL_ERROR_INTEGRITY = -1,
 	SL_SUCCESS = 0,
+	SL_ERROR_ALLOCATION,
 	SL_ERROR_TOO_FEW_ARGS,
 	SL_ERROR_TOO_MANY_ARGS,
 	SL_ERROR_MAP_NAME,
+	SL_ERROR_MAP_OPEN,
+	SL_ERROR_MAP_CLOSE,
+	SL_ERROR_MAP_READ,
+	SL_ERROR_MAP_UNEXPECTED_SYMBOL,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
