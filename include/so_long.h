@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/09 14:53:15 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/15 20:46:52 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ typedef enum e_sl_status {
 	SL_ERROR_MAP_OPEN,
 	SL_ERROR_MAP_CLOSE,
 	SL_ERROR_MAP_READ,
+	SL_ERROR_MAP_EMPTY,
 	SL_ERROR_MAP_UNEXPECTED_SYMBOL,
+	SL_ERROR_MAP_NO_LAST_NEWLINE,
+	SL_ERROR_MAP_EMPTY_LINE,
+	SL_ERROR_MAP_NON_RECTANGLE,
+	SL_ERROR_MAP_TOO_SMALL,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
@@ -107,6 +112,11 @@ t_sl_status	sl_err(t_sl_status code, char *fmt, ...);
 t_sl_status	sl_01_get_filename_from_argc_argv(t_sl_game *game);
 t_sl_status	sl_02_check_file_extention(t_sl_game *game);
 t_sl_status	sl_03_read_map_data(t_sl_game *game);
+t_sl_status	sl_xx_check_data_non_empty(t_sl_game *game);
+t_sl_status	sl_xx_check_data_is_print(t_sl_game *game);
+t_sl_status	sl_xx_check_data_symbols(t_sl_game *game);
+t_sl_status sl_xx_check_trailing_newline(t_sl_game *game);
+t_sl_status sl_xx_check_no_empty_lines(t_sl_game *game);
 t_sl_status	sl_04_init_map(t_sl_game *game);
 t_sl_status	sl_05_read_assets(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
@@ -115,5 +125,6 @@ t_sl_status	sl_08_init_draw_utils(t_sl_game *game);
 t_sl_status	sl_09_add_hooks(t_sl_game *game);
 t_sl_status	sl_10_start_mlx_loop(t_sl_game *game);
 t_sl_status	sl_11_print_summary(t_sl_game *game);
+
 
 #endif

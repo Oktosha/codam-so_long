@@ -82,7 +82,9 @@ flow/sl_07_instantiate_images.c \
 flow/sl_08_init_draw_utils.c \
 flow/sl_09_add_hooks.c \
 flow/sl_10_start_mlx_loop.c \
-flow/sl_11_print_summary.c
+flow/sl_11_print_summary.c \
+flow/sl_xx_check_data_is_print.c \
+flow/sl_xx_check_data_symbols.c
 
 SRC_FOLDER=src
 BINARY_FOLDER=bin
