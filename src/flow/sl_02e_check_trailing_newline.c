@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_xx_check_no_empty_lines.c                       :+:    :+:            */
+/*   sl_02e_check_trailing_newline.c                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/15 19:07:35 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/15 19:22:15 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/15 18:58:09 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/16 22:42:42 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_sl_status sl_xx_check_no_empty_lines(t_sl_game *game)
+t_sl_status	sl_02e_check_trailing_newline(t_sl_game *game)
 {
-	int		i;
-	int		line;
-	char	ch;
-	char	prev;
+	int	len;
 
-	i = 0;
-	line = 1;
-	prev = '\n';
-	while (i < game->raw_map.len)
-	{
-		ch = game->raw_map.data[i];
-		if (prev == '\n' && ch == '\n')
-			return (sl_err(SL_ERROR_MAP_EMPTY_LINE, \
-					"Line %d of %s is empty but empty lines aren't allowed", \
-					line, game->map_filename));
-		i += 1;
-		if (ch == '\n')
-			line += 1;
-		prev = ch;
-	}
+	len = game->raw_map.len;
+	if (len < 1)
+		return (sl_err(SL_ERROR_INTEGRITY, \
+			"Trailing newline check on empty data\n" \
+			"Size check should go first\n"));
+	if (game->raw_map.data[len - 1] != '\n')
+		return (sl_err(SL_ERROR_MAP_NO_LAST_NEWLINE, \
+			"No newline at the end of %s\n" \
+			"The last line of a valid map should end with a newline", \
+			game->map_filename));
 	return (SL_SUCCESS);
 }

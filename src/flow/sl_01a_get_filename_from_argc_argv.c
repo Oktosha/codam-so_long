@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_xx_check_data_not_empty.c                       :+:    :+:            */
+/*   sl_01a_get_filename_from_argc_argv.c               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/15 18:51:09 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/15 18:59:32 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/07 15:25:33 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/16 22:04:22 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_sl_status	sl_xx_check_data_non_empty(t_sl_game *game)
+t_sl_status	sl_01a_get_filename_from_argc_argv(t_sl_game *game)
 {
-	if (game->raw_map.len == 0)
-		return sl_error(SL_ERROR_MAP_EMPTY, \
-			"Map file %s is empty", \
-			game->map_filename);
+	if (game->argc < 2)
+		return (sl_err(SL_ERROR_TOO_FEW_ARGS, "No map file provided"));
+	if (game->argc > 2)
+		return (sl_err(SL_ERROR_TOO_MANY_ARGS, "Too many command line args"));
+	game->map_filename = game->argv[1];
 	return (SL_SUCCESS);
 }

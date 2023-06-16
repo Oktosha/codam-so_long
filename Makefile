@@ -66,15 +66,16 @@ so_long.h
 HEADERS=${addprefix ${SO_LONG_INCLUDE_FOLDER}/,${HEADER_SRCS}}
 
 SRCS=\
-main.c \
-sl_apply.c \
-sl_cleanup.c \
-sl_err.c \
-sl_init.c \
-so_long.c \
-flow/sl_01_get_filename_from_argc_argv.c \
-flow/sl_02_check_file_extention.c \
-flow/sl_03_read_map_data.c \
+flow/sl_01a_get_filename_from_argc_argv.c \
+flow/sl_01b_check_file_extention.c \
+flow/sl_02a_read_map_data.c \
+flow/sl_02b_check_data_not_empty.c \
+flow/sl_02c_check_data_is_print.c \
+flow/sl_02d_check_data_symbols.c \
+flow/sl_02e_check_trailing_newline.c \
+flow/sl_02f_check_no_empty_lines.c \
+flow/sl_02g_find_map_dimensions.c \
+flow/sl_02h_reject_small_map.c \
 flow/sl_04_init_map.c \
 flow/sl_05_read_assets.c \
 flow/sl_06_init_mlx.c \
@@ -83,8 +84,12 @@ flow/sl_08_init_draw_utils.c \
 flow/sl_09_add_hooks.c \
 flow/sl_10_start_mlx_loop.c \
 flow/sl_11_print_summary.c \
-flow/sl_xx_check_data_is_print.c \
-flow/sl_xx_check_data_symbols.c
+main.c \
+sl_apply.c \
+sl_cleanup.c \
+sl_err.c \
+sl_init.c \
+so_long.c
 
 SRC_FOLDER=src
 BINARY_FOLDER=bin

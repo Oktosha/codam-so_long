@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_02_check_file_extention.c                       :+:    :+:            */
+/*   sl_01b_check_file_extention.c                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/07 16:52:53 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:01:48 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/16 22:09:21 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codam_io.h"
 #include "so_long.h"
 
-t_sl_status	sl_02_check_file_extention(t_sl_game *game)
+t_sl_status	sl_01b_check_file_extention(t_sl_game *game)
 {
 	int	len;
 

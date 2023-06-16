@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_xx_check_data_symbols.c                         :+:    :+:            */
+/*   sl_02d_check_data_symbols.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/09 15:05:19 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/15 18:46:14 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/16 22:42:11 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static char	*s_sl_whitespace_name(int ch)
 	return ("unrecognized");
 }
 
-t_sl_status	sl_xx_check_data_symbols(t_sl_game *game)
+t_sl_status	sl_02d_check_data_symbols(t_sl_game *game)
 {
 	int		line;
-	int 	pos;
+	int		pos;
 	int		i;
 	char	ch;
 
@@ -48,28 +48,19 @@ t_sl_status	sl_xx_check_data_symbols(t_sl_game *game)
 	i = 0;
 	while (i < game->raw_map.len)
 	{
-		ch = game->raw_map.data[i];
+		ch = game->raw_map.data[i++];
+		if (!s_sl_is_allowed_char(ch) && io_is_ascii_whitespace(ch))
+			return (sl_err(SL_ERROR_MAP_UNEXPECTED_SYMBOL, \
+				"Unexpected %s on line %d at position %d in %s\n" \
+				"Whitespaces other than newlines aren't allowed", \
+				s_sl_whitespace_name(ch), line, pos, game->map_filename));
 		if (!s_sl_is_allowed_char(ch))
-		{
-			if (io_is_ascii_whitespace(ch))
-			{
-				return (sl_err(SL_ERROR_MAP_UNEXPECTED_SYMBOL, \
-					"Unexpected %s on line %d at position %d in %s\n" \
-					"Whitespaces other than newlines aren't allowed", \
-					s_sl_whitespace_name(ch), line, pos, game->map_filename));
-			}
 			return (sl_err(SL_ERROR_MAP_UNEXPECTED_SYMBOL, \
 				"Unexpected symbol '%c' on line %d at position %d in %s\n" \
 				"Allowed symbols are '\\n', '0', '1', 'C', 'E', 'P'", \
 				ch, line, pos, game->map_filename));
-		}
-		if (ch == '\n')
-		{
-			line += 1;
-			pos = 0;
-		}
-		pos += 1;
-		i += 1;
+		line += ch == '\n';
+		pos = pos * (ch != '\n') + 1;
 	}
 	return (SL_SUCCESS);
 }

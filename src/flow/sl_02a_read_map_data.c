@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_03_read_map_data.c                              :+:    :+:            */
+/*   sl_02a_read_map_data.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/07 17:09:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/09 14:02:02 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/16 22:09:30 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codam_io.h"
 #include "so_long.h"
 
-t_sl_status	sl_03_read_map_data(t_sl_game *game)
+t_sl_status	sl_02a_read_map_data(t_sl_game *game)
 {
 	t_io_read_file_status	read_status;
 

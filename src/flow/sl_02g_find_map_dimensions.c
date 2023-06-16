@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_xy_find_map_dimensions.c                        :+:    :+:            */
+/*   sl_02g_find_map_dimensions.c                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/15 20:29:11 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/15 20:41:34 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/16 22:44:30 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * and there is at least one string
  * (all checked earlier)
 */
-t_sl_status sl_xy_find_map_dimensions(t_sl_game *game)
+t_sl_status	sl_02g_find_map_dimensions(t_sl_game *game)
 {
 	int		i;
 	int		width;
@@ -26,7 +26,7 @@ t_sl_status sl_xy_find_map_dimensions(t_sl_game *game)
 
 	i = 0;
 	width = 0;
-	while(i < game->raw_map.len)
+	while (i < game->raw_map.len)
 	{
 		ch = game->raw_map.data[i];
 		if (ch == '\n')
@@ -35,12 +35,10 @@ t_sl_status sl_xy_find_map_dimensions(t_sl_game *game)
 			if (game->map.width == 0)
 				game->map.width = width;
 			if (game->map.width != width)
-			{
 				return (sl_err(SL_ERROR_MAP_NON_RECTANGLE, \
 				"Map %s is not rectangular\n" \
 				"Line %d width = %d differs from the established width = %d", \
 				game->map_filename, game->map.height, width, game->map.width));
-			}
 			width = -1;
 		}
 		i += 1;

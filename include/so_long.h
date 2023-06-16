@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/15 20:46:52 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/16 21:50:50 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,16 @@ void		sl_apply(t_sl_game *game, t_sl_flow f, t_sl_status *status);
 void		sl_cleanup(t_sl_game *game, t_sl_status *status);
 t_sl_status	sl_err(t_sl_status code, char *fmt, ...);
 
-t_sl_status	sl_01_get_filename_from_argc_argv(t_sl_game *game);
-t_sl_status	sl_02_check_file_extention(t_sl_game *game);
-t_sl_status	sl_03_read_map_data(t_sl_game *game);
-t_sl_status	sl_xx_check_data_non_empty(t_sl_game *game);
-t_sl_status	sl_xx_check_data_is_print(t_sl_game *game);
-t_sl_status	sl_xx_check_data_symbols(t_sl_game *game);
-t_sl_status sl_xx_check_trailing_newline(t_sl_game *game);
-t_sl_status sl_xx_check_no_empty_lines(t_sl_game *game);
+t_sl_status	sl_01a_get_filename_from_argc_argv(t_sl_game *game);
+t_sl_status	sl_01b_check_file_extention(t_sl_game *game);
+t_sl_status	sl_02a_read_map_data(t_sl_game *game);
+t_sl_status	sl_02b_check_data_non_empty(t_sl_game *game);
+t_sl_status	sl_02c_check_data_is_print(t_sl_game *game);
+t_sl_status	sl_02d_check_data_symbols(t_sl_game *game);
+t_sl_status sl_02e_check_trailing_newline(t_sl_game *game);
+t_sl_status sl_02f_check_no_empty_lines(t_sl_game *game);
+t_sl_status sl_02g_find_map_dimensions(t_sl_game *game);
+t_sl_status sl_02h_reject_small_map(t_sl_game *game);
 t_sl_status	sl_04_init_map(t_sl_game *game);
 t_sl_status	sl_05_read_assets(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
