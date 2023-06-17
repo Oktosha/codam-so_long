@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/17 15:14:55 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/17 16:12:46 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_sl_status {
 	SL_ERROR_MAP_EMPTY_LINE,
 	SL_ERROR_MAP_NON_RECTANGLE,
 	SL_ERROR_MAP_TOO_SMALL,
+	SL_ERROR_MAP_BORDERS,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
@@ -127,12 +128,13 @@ t_sl_status	sl_02a_read_map_data(t_sl_game *game);
 t_sl_status	sl_02b_check_data_non_empty(t_sl_game *game);
 t_sl_status	sl_02c_check_data_is_print(t_sl_game *game);
 t_sl_status	sl_02d_check_data_symbols(t_sl_game *game);
-t_sl_status sl_02e_check_trailing_newline(t_sl_game *game);
-t_sl_status sl_02f_check_no_empty_lines(t_sl_game *game);
-t_sl_status sl_02g_find_map_dimensions(t_sl_game *game);
-t_sl_status sl_02h_reject_small_map(t_sl_game *game);
+t_sl_status	sl_02e_check_trailing_newline(t_sl_game *game);
+t_sl_status	sl_02f_check_no_empty_lines(t_sl_game *game);
+t_sl_status	sl_02g_find_map_dimensions(t_sl_game *game);
+t_sl_status	sl_02h_reject_small_map(t_sl_game *game);
 t_sl_status	sl_02i_allocate_map_data(t_sl_game *game);
-t_sl_status sl_02j_fill_map_data(t_sl_game *game);
+t_sl_status	sl_02j_fill_map_data(t_sl_game *game);
+t_sl_status	sl_02k_check_borders(t_sl_game *game);
 t_sl_status	sl_04_init_map(t_sl_game *game);
 t_sl_status	sl_05_read_assets(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
@@ -141,6 +143,5 @@ t_sl_status	sl_08_init_draw_utils(t_sl_game *game);
 t_sl_status	sl_09_add_hooks(t_sl_game *game);
 t_sl_status	sl_10_start_mlx_loop(t_sl_game *game);
 t_sl_status	sl_11_print_summary(t_sl_game *game);
-
 
 #endif
