@@ -27,6 +27,12 @@ It'll give sorted list, separated by space + escaped newline
 
 ## Testing
 
+Build with sanitizer on my personal laptop
+
+```shell
+make LIBGLFW_FLAG=-lglfw "CFLAGS=-Wall -Werror -Wextra -fsanitize=address"
+```
+
 Launch so_long on all maps with errors
 
 ```shell
@@ -36,4 +42,3 @@ find maps/error -name "*.ber" -exec echo {} \;  \( -exec ./so_long {} \; -o -tru
 ## Things to be careful about
 
 be careful, don't free all data in key hook, one can queue several key hooks
-

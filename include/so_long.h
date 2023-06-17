@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/17 16:12:46 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/17 19:48:40 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef enum e_sl_status {
 	SL_ERROR_MAP_NON_RECTANGLE,
 	SL_ERROR_MAP_TOO_SMALL,
 	SL_ERROR_MAP_BORDERS,
+	SL_ERROR_MAP_NO_PLAYER,
+	SL_ERROR_MAP_MULTIPLE_PLAYERS,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
@@ -135,6 +137,7 @@ t_sl_status	sl_02h_reject_small_map(t_sl_game *game);
 t_sl_status	sl_02i_allocate_map_data(t_sl_game *game);
 t_sl_status	sl_02j_fill_map_data(t_sl_game *game);
 t_sl_status	sl_02k_check_borders(t_sl_game *game);
+t_sl_status	sl_02l_fill_player_coordinates(t_sl_game *game);
 t_sl_status	sl_04_init_map(t_sl_game *game);
 t_sl_status	sl_05_read_assets(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
