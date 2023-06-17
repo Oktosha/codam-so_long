@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/16 21:50:50 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/17 15:14:55 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,22 @@ typedef t_sl_status(*t_sl_flow)(t_sl_game *game);
 
 t_sl_status	so_long(int argc, char **argv);
 
-void		sl_init(t_sl_game *game);
 void		sl_apply(t_sl_game *game, t_sl_flow f, t_sl_status *status);
+/**
+ * Allocates count * size memory, fills it with zeroes
+ * @warning p must be a pointer-to-pointer, not a pointer!
+ * The type is void* and not (void**) only for easier casting!
+ * @note contents of *p doesn't matter, it is always overwritten
+ * @note if allocation fails, *p = NULL
+ * @param[out] p pointer to pointer to allocated memory
+ * @param[in] count how many elements to allocate, must be > 0
+ * @param[in] size size of an individual element, must be > 0
+ * @returns SL_SUCCESS on success, SL_ERROR_ALLOCATION on error
+*/
+t_sl_status	sl_calloc(void *p, int count, int size);
 void		sl_cleanup(t_sl_game *game, t_sl_status *status);
 t_sl_status	sl_err(t_sl_status code, char *fmt, ...);
+void		sl_init(t_sl_game *game);
 
 t_sl_status	sl_01a_get_filename_from_argc_argv(t_sl_game *game);
 t_sl_status	sl_01b_check_file_extention(t_sl_game *game);
@@ -119,6 +131,8 @@ t_sl_status sl_02e_check_trailing_newline(t_sl_game *game);
 t_sl_status sl_02f_check_no_empty_lines(t_sl_game *game);
 t_sl_status sl_02g_find_map_dimensions(t_sl_game *game);
 t_sl_status sl_02h_reject_small_map(t_sl_game *game);
+t_sl_status	sl_02i_allocate_map_data(t_sl_game *game);
+t_sl_status sl_02j_fill_map_data(t_sl_game *game);
 t_sl_status	sl_04_init_map(t_sl_game *game);
 t_sl_status	sl_05_read_assets(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);

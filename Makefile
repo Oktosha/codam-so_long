@@ -76,6 +76,8 @@ flow/sl_02e_check_trailing_newline.c \
 flow/sl_02f_check_no_empty_lines.c \
 flow/sl_02g_find_map_dimensions.c \
 flow/sl_02h_reject_small_map.c \
+flow/sl_02i_allocate_map_data.c \
+flow/sl_02j_fill_map_data.c \
 flow/sl_04_init_map.c \
 flow/sl_05_read_assets.c \
 flow/sl_06_init_mlx.c \
@@ -86,6 +88,7 @@ flow/sl_10_start_mlx_loop.c \
 flow/sl_11_print_summary.c \
 main.c \
 sl_apply.c \
+sl_calloc.c \
 sl_cleanup.c \
 sl_err.c \
 sl_init.c \

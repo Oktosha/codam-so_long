@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:06:30 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/16 21:59:57 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/17 15:35:14 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static t_sl_status	s_sl_02(t_sl_game *game)
 	sl_apply(game, sl_02f_check_no_empty_lines, &status);
 	sl_apply(game, sl_02g_find_map_dimensions, &status);
 	sl_apply(game, sl_02h_reject_small_map, &status);
+	sl_apply(game, sl_02i_allocate_map_data, &status);
+	sl_apply(game, sl_02j_fill_map_data, &status);
 	return (status);
 }
 
