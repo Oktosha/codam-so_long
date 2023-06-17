@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:06:30 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/17 20:08:47 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/17 20:39:55 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static t_sl_status	s_sl_02(t_sl_game *game)
 	sl_apply(game, sl_02j_fill_map_data, &status);
 	sl_apply(game, sl_02k_check_borders, &status);
 	sl_apply(game, sl_02l_fill_player_coordinates, &status);
+	sl_apply(game, sl_02m_check_exit, &status);
 	return (status);
 }
 
