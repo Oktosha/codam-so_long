@@ -81,6 +81,7 @@ flow/sl_02j_fill_map_data.c \
 flow/sl_02k_check_borders.c \
 flow/sl_02l_fill_player_coordinates.c \
 flow/sl_02m_check_exit.c \
+flow/sl_02n_count_collectibles.c \
 flow/sl_04_init_map.c \
 flow/sl_05_read_assets.c \
 flow/sl_06_init_mlx.c \
