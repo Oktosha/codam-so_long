@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/19 18:29:59 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 00:05:04 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "MLX42/MLX42.h"
 # include "codam_io.h"
+
+# ifndef ASSETS_FOLDER
+#  define ASSETS_FOLDER "./assets/"
+# endif
 
 typedef enum e_sl_status {
 	SL_ERROR_INTEGRITY = -1,

@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/07 17:10:02 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/19 18:47:03 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 00:05:39 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ t_sl_status	sl_03_read_assets(t_sl_game *game)
 
 	status = SL_SUCCESS;
 	s_sl_apply_load(\
-		&(game->assets.background), "./assets/background.png", &status);
+		&(game->assets.background), ASSETS_FOLDER "background.png", &status);
 	s_sl_apply_load(\
-		&(game->assets.collectible), "./assets/collectible.png", &status);
+		&(game->assets.collectible), ASSETS_FOLDER "collectible.png", &status);
 	s_sl_apply_load(\
-		&(game->assets.exit_closed), "./assets/exit_closed.png", &status);
+		&(game->assets.exit_closed), ASSETS_FOLDER "exit_closed.png", &status);
 	s_sl_apply_load(\
-		&(game->assets.exit_open), "./assets/exit_open.png", &status);
+		&(game->assets.exit_open), ASSETS_FOLDER "exit_open.png", &status);
 	s_sl_apply_load(\
-		&(game->assets.player), "./assets/player.png", &status);
+		&(game->assets.player), ASSETS_FOLDER "player.png", &status);
 	s_sl_apply_load(\
-		&(game->assets.wall), "./assets/wall.png", &status);
+		&(game->assets.wall), ASSETS_FOLDER "wall.png", &status);
 	return (status);
 }

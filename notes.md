@@ -33,6 +33,12 @@ Build with sanitizer on my personal laptop
 make LIBGLFW_FLAG=-lglfw "CFLAGS=-Wall -Werror -Wextra -fsanitize=address"
 ```
 
+Compiling with different value of a string macro (note the quotes)
+
+```shell
+make soft_re LIBGLFW_FLAG=-lglfw "CFLAGS=-Wall -Werror -Wextra -fsanitize=address -DASSETS_FOLDER='\"./alternative_assets/\"'"
+```
+
 Launch so_long on all maps with errors
 
 ```shell

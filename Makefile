@@ -119,7 +119,7 @@ norm: ${LIBIO_SUBMODULE}
 
 # -- More boilerplate things --
 
-.PHONY: all libio libmlx clean fclean re norm
+.PHONY: all norm libio libmlx clean fclean re soft_clean soft_re
 
 clean:
 	rm -rf ${BINARY_FOLDER} ${LIBMLX_BUILD_FOLDER} ${LIBIO_BUILD_FOLDER}
@@ -128,3 +128,8 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
+
+soft_clean:
+	rm -rf ${BINARY_FOLDER} ${NAME}
+
+soft_re: soft_clean ${NAME}
