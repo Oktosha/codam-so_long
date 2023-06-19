@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:06:30 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/19 18:25:30 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 01:16:39 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_sl_status	so_long(int argc, char **argv)
 	sl_apply(&game, s_sl_01, &status);
 	sl_apply(&game, s_sl_02, &status);
 	sl_apply(&game, sl_03_read_assets, &status);
+	sl_apply(&game, sl_04a_find_tile_size, &status);
 	sl_apply(&game, sl_06_init_mlx, &status);
 	sl_apply(&game, sl_07_instantiate_images, &status);
 	sl_apply(&game, sl_08_init_draw_utils, &status);

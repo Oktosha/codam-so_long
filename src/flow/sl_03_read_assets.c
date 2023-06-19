@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/07 17:10:02 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/20 00:05:39 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 00:54:35 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_sl_status	s_sl_load_asset(mlx_texture_t **p, const char *path)
 {
 	*p = mlx_load_png(path);
 	if (*p == NULL)
-		return (sl_err(SL_ERROR_ASSET, "Can't load asset %s", path));
+		return (sl_err(SL_ERROR_ASSET_LOAD, "Can't load asset %s", path));
 	return (SL_SUCCESS);
 }
 

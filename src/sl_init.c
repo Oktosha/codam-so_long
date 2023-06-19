@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 00:11:10 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:23:18 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 00:37:20 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	s_sl_init_draw_utils(t_sl_draw_utils *utils)
 {
 	utils->origin.x = 0;
 	utils->origin.y = 0;
-	utils->tile_size = 0;
+	utils->tile_size.x = 0;
+	utils->tile_size.y = 0;
 	utils->background_coverage.x = 0;
 	utils->background_coverage.y = 0;
 	utils->instance_ids = NULL;

@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/20 00:05:04 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 01:07:09 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef enum e_sl_status {
 	SL_ERROR_MAP_NO_COLLECTIBLES,
 	SL_ERROR_MAP_UNREACHABLE_EXIT,
 	SL_ERROR_MAP_UNREACHABLE_COLLECTIBLE,
-	SL_ERROR_ASSET,
+	SL_ERROR_ASSET_LOAD,
+	SL_ERROR_ASSET_DIMENSIONS,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
@@ -66,7 +67,7 @@ typedef struct s_sl_assets {
 typedef struct s_sl_draw_utils
 {
 	t_sl_point	origin;
-	int			tile_size;
+	t_sl_point	tile_size;
 	t_sl_point	background_coverage;
 	int			**instance_ids;
 }	t_sl_draw_utils;
@@ -152,6 +153,7 @@ t_sl_status	sl_02m_check_exit(t_sl_game *game);
 t_sl_status	sl_02n_count_collectibles(t_sl_game *game);
 t_sl_status	sl_02o_check_reachability(t_sl_game *game);
 t_sl_status	sl_03_read_assets(t_sl_game *game);
+t_sl_status	sl_04a_find_tile_size(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
 t_sl_status	sl_07_instantiate_images(t_sl_game *game);
 t_sl_status	sl_08_init_draw_utils(t_sl_game *game);
