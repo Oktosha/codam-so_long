@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/19 17:31:37 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/19 18:29:59 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef enum e_sl_status {
 	SL_ERROR_MAP_NO_COLLECTIBLES,
 	SL_ERROR_MAP_UNREACHABLE_EXIT,
 	SL_ERROR_MAP_UNREACHABLE_COLLECTIBLE,
+	SL_ERROR_ASSET,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
@@ -146,8 +147,7 @@ t_sl_status	sl_02l_fill_player_coordinates(t_sl_game *game);
 t_sl_status	sl_02m_check_exit(t_sl_game *game);
 t_sl_status	sl_02n_count_collectibles(t_sl_game *game);
 t_sl_status	sl_02o_check_reachability(t_sl_game *game);
-t_sl_status	sl_04_init_map(t_sl_game *game);
-t_sl_status	sl_05_read_assets(t_sl_game *game);
+t_sl_status	sl_03_read_assets(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
 t_sl_status	sl_07_instantiate_images(t_sl_game *game);
 t_sl_status	sl_08_init_draw_utils(t_sl_game *game);
