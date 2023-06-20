@@ -83,8 +83,8 @@ flow/sl_02l_fill_player_coordinates.c \
 flow/sl_02m_check_exit.c \
 flow/sl_02n_count_collectibles.c \
 flow/sl_02o_check_reachability.c \
-flow/sl_03_read_assets.c \
-flow/sl_04a_find_tile_size.c \
+flow/sl_03a_read_assets.c \
+flow/sl_03b_find_tile_size.c \
 flow/sl_06_init_mlx.c \
 flow/sl_07_instantiate_images.c \
 flow/sl_08_init_draw_utils.c \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_04a_find_tile_size.c                            :+:    :+:            */
+/*   sl_03b_find_tile_size.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/20 00:49:42 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/20 01:20:01 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 14:24:44 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	apply_full_dims_check(mlx_texture_t *asset, char *name, \
 		*status = s_sl_check_dims_are_expected(asset, name, size);
 }
 
-t_sl_status	sl_04a_find_tile_size(t_sl_game *game)
+t_sl_status	sl_03b_find_tile_size(t_sl_game *game)
 {
 	t_sl_status	status;
 

@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/07 17:10:02 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/20 00:54:35 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 14:23:29 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	s_sl_apply_load(mlx_texture_t **p, const char *path, \
 		*status = s_sl_load_asset(p, path);
 }
 
-t_sl_status	sl_03_read_assets(t_sl_game *game)
+t_sl_status	sl_03a_read_assets(t_sl_game *game)
 {
 	t_sl_status	status;
 
