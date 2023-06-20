@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/20 14:25:00 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/20 23:15:48 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ t_sl_status	sl_02n_count_collectibles(t_sl_game *game);
 t_sl_status	sl_02o_check_reachability(t_sl_game *game);
 t_sl_status	sl_03a_read_assets(t_sl_game *game);
 t_sl_status	sl_03b_find_tile_size(t_sl_game *game);
+t_sl_status	sl_03c_allocate_instance_ids(t_sl_game *game);
 t_sl_status	sl_06_init_mlx(t_sl_game *game);
 t_sl_status	sl_07_instantiate_images(t_sl_game *game);
 t_sl_status	sl_08_init_draw_utils(t_sl_game *game);
