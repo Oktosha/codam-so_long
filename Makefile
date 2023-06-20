@@ -87,6 +87,7 @@ flow/sl_03a_read_assets.c \
 flow/sl_03b_find_tile_size.c \
 flow/sl_03c_allocate_instance_ids.c \
 flow/sl_04_init_mlx.c \
+flow/sl_05a_create_images_from_textures.c \
 flow/sl_11_print_summary.c \
 main.c \
 sl_apply.c \
