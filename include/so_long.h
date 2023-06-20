@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/21 00:26:20 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 01:12:05 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef enum e_sl_status {
 	SL_ERROR_ASSET_DIMENSIONS,
 	SL_ERROR_INIT_MLX,
 	SL_ERROR_TEXTURE_TO_IMAGE,
+	SL_ERROR_IMAGE_TO_WINDOW,
 	SL_ERROR_IN_GAME
 }	t_sl_status;
 
@@ -71,6 +72,9 @@ typedef struct s_sl_draw_utils
 	t_sl_point	origin;
 	t_sl_point	tile_size;
 	t_sl_point	background_coverage;
+	int			player_id;
+	int			exit_closed_id;
+	int			exit_open_id;
 	int			**instance_ids;
 }	t_sl_draw_utils;
 
