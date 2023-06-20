@@ -86,11 +86,7 @@ flow/sl_02o_check_reachability.c \
 flow/sl_03a_read_assets.c \
 flow/sl_03b_find_tile_size.c \
 flow/sl_03c_allocate_instance_ids.c \
-flow/sl_06_init_mlx.c \
-flow/sl_07_instantiate_images.c \
-flow/sl_08_init_draw_utils.c \
-flow/sl_09_add_hooks.c \
-flow/sl_10_start_mlx_loop.c \
+flow/sl_04_init_mlx.c \
 flow/sl_11_print_summary.c \
 main.c \
 sl_apply.c \
