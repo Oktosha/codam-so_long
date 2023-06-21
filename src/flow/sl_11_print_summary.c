@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/07 15:48:28 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:23:01 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 15:33:29 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_sl_status	sl_11_print_summary(t_sl_game *game)
 		return (SL_SUCCESS);
 	}
 	if (status == SL_GAME_STATUS_ERROR)
-		return (sl_err(SL_ERROR_IN_GAME, "An error occured in game"));
+		return (sl_err(SL_ERROR_IN_GAME, \
+			"An error occured in game; " \
+			"probably couldn't allocate background tiles"));
 	return (sl_err(SL_ERROR_INTEGRITY, "Game status %d in the end", status));
 }

@@ -93,6 +93,7 @@ flow/sl_06_start_mlx.c \
 flow/sl_11_print_summary.c \
 hooks/sl_hook_close.c \
 hooks/sl_hook_key.c \
+hooks/sl_hook_loop.c \
 main.c \
 sl_apply.c \
 sl_calloc.c \

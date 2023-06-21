@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/21 14:16:44 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 16:14:39 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_sl_draw_utils
 	int			exit_closed_id;
 	int			exit_open_id;
 	int			**instance_ids;
+	int			back_z;
 }	t_sl_draw_utils;
 
 typedef struct s_sl_images

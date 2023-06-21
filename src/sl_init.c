@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 00:11:10 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/20 00:37:20 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 16:14:39 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ static void	s_sl_init_draw_utils(t_sl_draw_utils *utils)
 	utils->background_coverage.x = 0;
 	utils->background_coverage.y = 0;
 	utils->instance_ids = NULL;
+	utils->player_id = -1;
+	utils->exit_closed_id = -1;
+	utils->exit_open_id = -1;
+	utils->back_z = -1;
 }
 
 void	sl_init(t_sl_game *game)

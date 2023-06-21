@@ -15,6 +15,19 @@ git remote add intra [REPO_URL_FROM_THE_INTRANET]
 git push intra main:master
 ```
 
+## Experimental main
+
+```shell
+gcc experimental_main.c \
+lib/MLX42/build/libmlx42.a lib/io/build/libcodamio.a \
+-ldl -lglfw -pthread -lm \
+-framework Cocoa \
+-framework OpenGL \
+-framework IOKit \
+-I lib/io/include \
+-I lib/MLX42/include
+```
+
 ## Codegen
 
 To get sources list ready for Makefile, run in the src folder:
