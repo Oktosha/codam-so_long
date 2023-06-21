@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_08_init_draw_utils.c                            :+:    :+:            */
+/*   sl_hook_close.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/07 17:10:18 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/07 17:12:18 by dkolodze      ########   odam.nl         */
+/*   Created: 2023/06/21 14:14:28 by dkolodze      #+#    #+#                 */
+/*   Updated: 2023/06/21 14:16:59 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_sl_status	sl_08_init_draw_utils(t_sl_game *game)
+void	sl_hook_close(void	*param)
 {
-	(void) game;
-	return (SL_SUCCESS);
+	t_sl_game	*game;
+
+	game = param;
+	game->map.game_status = SL_GAME_STATUS_CANCELLED;
 }
