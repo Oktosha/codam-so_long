@@ -55,7 +55,13 @@ make soft_re LIBGLFW_FLAG=-lglfw "CFLAGS=-Wall -Werror -Wextra -fsanitize=addres
 Launch so_long on all maps with errors
 
 ```shell
-find maps/error -name "*.ber" -exec echo {} \;  \( -exec ./so_long {} \; -o -true \) -exec echo  \;
+find maps/error -name "*.ber" -exec sh -c 'echo "running on $0"; ./so_long "$0"; echo "retcode = $?"; echo' {} \;
+```
+
+Launch several so_long instances in the background
+
+```shell
+find maps/subject -name "*.ber" -exec sh -c './so_long "$0" &' {} \;
 ```
 
 ## Things to be careful about
