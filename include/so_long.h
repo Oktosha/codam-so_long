@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:03:34 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/21 01:12:05 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 02:46:47 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,9 @@ void		sl_cleanup(t_sl_game *game, t_sl_status *status);
 t_sl_status	sl_err(t_sl_status code, char *fmt, ...);
 void		sl_init(t_sl_game *game);
 
+void		sl_hook_key(mlx_key_data_t keydata, void *param);
+void		sl_hook_loop(void *param);
+
 t_sl_status	sl_01a_get_filename_from_argc_argv(t_sl_game *game);
 t_sl_status	sl_01b_check_file_extention(t_sl_game *game);
 t_sl_status	sl_02a_read_map_data(t_sl_game *game);
@@ -164,6 +167,7 @@ t_sl_status	sl_03c_allocate_instance_ids(t_sl_game *game);
 t_sl_status	sl_04_init_mlx(t_sl_game *game);
 t_sl_status	sl_05a_create_images_from_textures(t_sl_game *game);
 t_sl_status	sl_05b_create_image_instances(t_sl_game *game);
+t_sl_status	sl_06_start_mlx(t_sl_game *game);
 t_sl_status	sl_11_print_summary(t_sl_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 17:23:20 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/19 18:08:57 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 02:34:36 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	s_sl_make_visited(t_sl_map *map, t_sl_point pos)
 		new_val = 'e';
 	if (old_val == '0')
 		new_val = 'o';
-	if (old_val == 'P')
-		new_val = 'p';
 	io_assert(new_val != '?', "new != '?'; old_val was %c", old_val);
 	map->data[pos.y][pos.x] = new_val;
 }
@@ -36,7 +34,7 @@ static int	s_sl_is_visited(t_sl_map *map, t_sl_point pos)
 	char	val;
 
 	val = map->data[pos.y][pos.x];
-	return ((val == 'c') || (val == 'o') || (val == 'e') || (val == 'p'));
+	return ((val == 'c') || (val == 'o') || (val == 'e'));
 }
 
 /**

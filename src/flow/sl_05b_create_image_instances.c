@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/21 01:00:37 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/21 01:27:24 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 02:35:23 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_sl_status	s_sl_exit(t_sl_game	*game, t_sl_point pos)
 t_sl_status	s_sl_player(t_sl_game *game)
 {
 	game->utils.player_id = mlx_image_to_window(\
-		game->mlx, game->img.exit_open, \
+		game->mlx, game->img.player, \
 		game->map.player.x * game->utils.tile_size.x, \
 		game->map.player.y * game->utils.tile_size.y);
 	if (game->utils.player_id == -1)
@@ -95,6 +95,6 @@ t_sl_status	sl_05b_create_image_instances(t_sl_game *game)
 		}
 	}
 	if (status == SL_SUCCESS)
-		s_sl_player(game);
+		status = s_sl_player(game);
 	return (status);
 }

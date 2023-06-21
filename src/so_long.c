@@ -6,7 +6,7 @@
 /*   By: dkolodze <dkolodze@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/25 17:06:30 by dkolodze      #+#    #+#                 */
-/*   Updated: 2023/06/21 01:24:46 by dkolodze      ########   odam.nl         */
+/*   Updated: 2023/06/21 02:28:15 by dkolodze      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_sl_status	so_long(int argc, char **argv)
 	sl_apply(&game, sl_04_init_mlx, &status);
 	sl_apply(&game, sl_05a_create_images_from_textures, &status);
 	sl_apply(&game, sl_05b_create_image_instances, &status);
+	sl_apply(&game, sl_06_start_mlx, &status);
 	sl_apply(&game, sl_11_print_summary, &status);
 	sl_cleanup(&game, &status);
 	return (status);
