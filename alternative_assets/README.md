@@ -1,3 +1,3 @@
 # Alternative assets
 
-Alternative assets were created by me. The are for testing non-square tiles.
+Alternative assets created by me for testing non-square tiles.
