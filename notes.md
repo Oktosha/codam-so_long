@@ -8,6 +8,10 @@ hooks don't have to be thread-safe, they are always called from the main thread
 
 mlx_close_window is safe to call from a hook (and mlx_terminate -> not)
 
+Be careful, don't free all data in key hook, one can queue triggering of several key hooks
+by pressing keys while resizing (resizing blocks events, see
+[this discussion](https://github.com/codam-coding-college/MLX42/issues/108)).
+
 ## Submodules
 
 ```shell
@@ -15,12 +19,18 @@ git remote add intra [REPO_URL_FROM_THE_INTRANET]
 git push intra main:master
 ```
 
-## Experimental main
+## Exploring stuff
+
+Compile a singe-file experimental program that uses the libraries
+(no warn/err flags used, they are annoying for experimentation)
 
 ```shell
+cmake lib/MLX42 -B lib/MLX42/build;
+make -C lib/MLX42/build -j4;
+make -C lib/io;
 gcc experimental_main.c \
 lib/MLX42/build/libmlx42.a lib/io/build/libcodamio.a \
--ldl -lglfw -pthread -lm \
+-ldl -lglfw3 -pthread -lm \
 -framework Cocoa \
 -framework OpenGL \
 -framework IOKit \
@@ -63,7 +73,3 @@ Launch several so_long instances in the background
 ```shell
 find maps/subject -name "*.ber" -exec sh -c './so_long "$0" &' {} \;
 ```
-
-## Things to be careful about
-
-be careful, don't free all data in key hook, one can queue several key hooks
